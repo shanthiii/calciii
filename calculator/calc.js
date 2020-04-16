@@ -42,16 +42,16 @@ const calculate = () => {
     let result = 0
     switch(calculationOperator) {
         case '+':
-            result = prevInput + currentInput
+            result = parseFloat(prevInput) + parseFloat(currentInput)
             break
         case '-':
-            result = prevInput - currentInput
+            result = parseFloat(prevInput) - parseFloat(currentInput)
             break
         case '*':
-            result = prevInput * currentInput
+            result = parseFloat(prevInput) * parseFloat(currentInput)
             break
         case '/':
-            result = prevInput / currentInput
+            result = parseFloat(prevInput) / parseFloat(currentInput)
             break
         default:
             return
@@ -59,3 +59,24 @@ const calculate = () => {
     currentInput = result.toString()
     calculationOperator = ''
 }
+const allClear = document.querySelector('.all-clear')
+   allClear.addEventListener('click', () => {
+    currentInput = '0'
+    calculationOperator = ''
+    updateScreen(currentInput)
+   })
+const Percentage = document.querySelector(".percentage")
+     Percentage.addEventListener("click", (event) => {
+          getPercentage(event.target.value)
+          updateScreen(currentInput)
+       })
+   
+const getPercentage = (percentage) => {
+    let result = parseFloat(currentInput) / 100 
+    currentInput = result.toString()
+}
+const decimals = document.querySelector(".decimal")
+    decimals.addEventListener("click", () => {
+    currentInput = currentInput + '.'
+      updateScreen(currentInput)
+    })
