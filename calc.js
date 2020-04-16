@@ -65,18 +65,20 @@ const allClear = document.querySelector('.all-clear')
     calculationOperator = ''
     updateScreen(currentInput)
    })
+
 const Percentage = document.querySelector(".percentage")
      Percentage.addEventListener("click", (event) => {
           getPercentage(event.target.value)
-          updateScreen(currentInput)
        })
-   
-const getPercentage = (percentage) => {
-    let result = parseFloat(currentInput) / 100 
-    currentInput = result.toString()
+const getPercentage = (percentage) => { 
+    let res = parseFloat(currentInput) / 100 
+    currentInput = res.toString() 
+        prevInput = currentInput
+        calculationOperator = '*'
+        currentInput = '0'
 }
 const decimals = document.querySelector(".decimal")
     decimals.addEventListener("click", () => {
-    currentInput = currentInput + '.'
+    currentInput = currentInput + "."
       updateScreen(currentInput)
     })
